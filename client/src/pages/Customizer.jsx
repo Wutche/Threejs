@@ -15,9 +15,37 @@ import {
 	CustomButton,
 } from "../components";
 import { useSnapshot } from "valtio";
+import { useState } from "react";
 
 const Customizer = () => {
 	const snap = useSnapshot(state);
+
+	const [file, setFile] = useState("");
+
+	const [prompt, setprompt] = useState("");
+	const [generatingImg, setgeneratingImg] = useState(false);
+
+	const [activeEditorTab, setactiveEditorTab] = useState("");
+	const [activeFilterTab, setactiveFilterTab] = useState({
+		logoShirt: true,
+		stylishShirt: false,
+	});
+
+	// handle file upload
+
+	// show tab content depending on the activeTab
+	const generateTabContent = () => {
+		switch (activeEditorTab) {
+			case "colorpicker":
+				return <ColorPicker />;
+			case "filepicker":
+				return <FilePicker />;
+			case "aipicker":
+				return <Aipicker />;
+			default:
+				return null;
+		}
+	};
 	return (
 		<AnimatePresence>
 			{!snap.intro && (
