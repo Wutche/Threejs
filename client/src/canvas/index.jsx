@@ -1,6 +1,6 @@
 
 
-const Canvas = () => {
+const CanvasModel = () => {
   return (
     <div>
       Canvas
@@ -8,4 +8,4 @@ const Canvas = () => {
   )
 }
 
-export default Canvas
+export default CanvasModel
