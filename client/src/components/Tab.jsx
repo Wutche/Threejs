@@ -1,11 +1,30 @@
+/** @format */
 
+import { useSnapshot } from "valtio";
+import state from "../store";
 
-const Tab = () => {
-  return (
-    <div>
-      Tab
-    </div>
-  )
-}
+const Tab = ({ tab, isFilter, isActive, handleClick }) => {
+	const snap = useSnapshot(state);
+	const activeStyles =
+		isFilter && isActive
+			? { backgroundColor: snap.color, opacity: 0.5 }
+			: { backgroundColor: "transparent", opacity: 1 };
 
-export default Tab
+	return (
+		<div
+			key={tab.name}
+			className={`tab-btn ${
+				isFilter ? "rounded-full glassmorphism" : "rounded"
+			}`}
+			onClick={handleClick}
+			style={activeStyles}>
+			<img
+				src={tab.icon}
+				alt={tab.name}
+				className={`${isFilter ? "w-2/3 h-2/3" : "w-11/12 object-contain"}`}
+			/>
+		</div>
+	);
+};
+
+export default Tab;
