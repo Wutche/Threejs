@@ -22,7 +22,7 @@ const Customizer = () => {
 
 	const [file, setFile] = useState("");
 
-	const [prompt, setprompt] = useState("");
+	const [prompt, setPrompt] = useState("");
 	const [generatingImg, setgeneratingImg] = useState(false);
 
 	const [activeEditorTab, setactiveEditorTab] = useState("");
@@ -41,9 +41,29 @@ const Customizer = () => {
 			case "filepicker":
 				return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
 			case "aipicker":
-				return <Aipicker />;
+				return (
+					<Aipicker
+						prompt={prompt}
+						setPrompt={setPrompt}
+						generatingImg={generatingImg}
+						handleSubmit={handleSubmit}
+					/>
+				);
 			default:
 				return null;
+		}
+	};
+
+	const handleSubmit = async (type) => {
+		if (!prompt) return alert("Please enter a prompt");
+
+		try {
+			// generating ai image
+		} catch (error) {
+			alert(error);
+		} finally {
+			setgeneratingImg(false);
+			setactiveEditorTab("");
 		}
 	};
 
