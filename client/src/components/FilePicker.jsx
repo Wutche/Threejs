@@ -1,11 +1,7 @@
-
+/** @format */
 
 const FilePicker = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+	return <div>filepicker</div>;
+};
 
-export default FilePicker
+export default FilePicker;
